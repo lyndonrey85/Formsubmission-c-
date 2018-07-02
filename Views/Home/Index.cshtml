@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3>Enter your information</h3>
+<form action="register" method="POST">
+    <label for="first">
+        First Name: <input type="text" name="first">
+    </label>
+    <label for="last">
+        Last Name: <input type="text" name="last">
+    </label>
+    <label for="age">
+        Age: <input type="number" name="age" min="1" max="110">
+    </label>
+    <label for="email">
+        Email: <input type="email" name="email">
+    </label>
+    <label for="password">
+        Password: <input type="password" name="password">
+    </label>
+    <button type="submit">Submit</button>
+</form>
+@{
+    foreach(var error in @ViewBag.Errors)
+    {
+        if(@error.Errors.Count > 0)
+        {
+            <p class="red">@error.Errors[0].ErrorMessage</p>
+        }
+    }
+}
